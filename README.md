@@ -6,3 +6,4 @@ Includes option to limit the time frame for when the file was last modified as w
 ![alt text](https://raw.githubusercontent.com/rhdalton/Python-File-Search-Program/master/assets/screencap.png)
 
 Additional functionality can be added to this program, for example moving, deleting, copying, renaming selected files.
+Using the Treeview widget to display results, a feature can be added to search sub-folders recursively for files and display results in treeview format.
