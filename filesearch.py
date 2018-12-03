@@ -4,8 +4,8 @@ import filesearch_gui
 
 
 class AppWindow(Frame):
-    def __init__(self, master):
-        Frame.__init__(self)
+    def __init__(self, master, *args, **kwargs):
+        Frame.__init__(self, *args, **kwargs)
 
         self.master = master
         self.master.option_add("*font", "Helvetica 10")
@@ -17,11 +17,14 @@ class AppWindow(Frame):
         self.master.iconbitmap(self.master, default="assets/file_search.ico")
         self.master.columnconfigure(0, weight=1)
 
+        # browse directory field
         self.var_path_name = StringVar()
 
+        # define which extensions options to show
         self.chkboxvars = []
         self.extlist = ['TXT', 'PDF', 'JPG', 'PNG', 'GIF', 'DOC']
 
+        # define the time limits and assign default to All time
         self.radiovar = IntVar()
         self.radiovar.set(5)
         self.radiovals = ["Day", "Week", "Month", "Year", "All time"]
