@@ -40,6 +40,8 @@ def search_files(window, app):
                 # if JPG is selected, add 'JPEG' to search extension as well
                 if app.extlist[i] == 'JPG':
                     validext.append(".JPEG")
+                elif app.extlist[i] == 'DOC':
+                    validext.append(".DOCX")
         if not validext:
             error_message(window, 'No extensions selected.')
             return
@@ -55,12 +57,15 @@ def search_files(window, app):
             5: 0  # all time
         }
 
+        # set the expired time limit based on user input
         expire_limit = datetime.today() - timedelta(days=expire_time.get(app.radiovar.get()))
 
         for i in dirlist:
             extension = os.path.splitext(i)
+            # if extension is in valid extension list
             if extension[1].upper() in validext:
                 mod = os.path.getmtime(os.path.join(app.var_path_name.get(), i))
+                # if datetime of modified file is greater than expired time limit
                 if (datetime.fromtimestamp(mod) > expire_limit) or (app.radiovar.get() == 5):
                     valid_file_list.append(i)
 
@@ -75,7 +80,7 @@ def search_files(window, app):
 
         else:
             error_message(window, 'No files with the selected extensions and time frame were found in:\n'
-                               '"' + app.var_path_name.get() + '"')
+                                  '"' + app.var_path_name.get() + '"')
 
     except FileNotFoundError:
         error_message(window, 'Invalid directory! Please try again.')

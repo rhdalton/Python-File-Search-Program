@@ -4,6 +4,9 @@ import filesearch_func
 
 
 def load_gui(app, window):
+    # creating grid frames for each row of content,
+    # then items will be packed into each grid to align everything left
+
     window.inputframe = tk.Frame(window)  # create new frame for input field row
     window.extframe = tk.Frame(window)  # create new frame for extension options
     window.dateframe = tk.Frame(window)  # create new frame for date range options
